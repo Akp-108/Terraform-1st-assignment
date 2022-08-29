@@ -1,0 +1,27 @@
+name: show a full fledged Terraform CI/CD pipeline with GH action
+
+env:
+  working-directry: ./main/module
+
+
+on:
+  push:   
+    branches: ["main", "master"]
+
+    workflow_dispatch:  
+
+
+jobs:
+  Creating_CI/CD_pipeline:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      AWS_SESSION_TOKEN: ${{secrets.AWS_SESSION_TOKEN}}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo this is one line
+
+
